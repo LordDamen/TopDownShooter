@@ -142,7 +142,32 @@ ModelImporter:
     7400000: mixamo.com
     9500000: //RootNode
     13700000: Vampire
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Vampire_MAT
+    second: {fileID: 2100000, guid: d895f43a4951de84e8ba37b04c868dbb, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Vampire_diffuse
+    second: {fileID: 2800000, guid: 2b88d225dfca27d47b4ae353931f27f2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Vampire_emission
+    second: {fileID: 2800000, guid: 0540dabb50b9d3c4ea39a32e87f17f3a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Vampire_normal
+    second: {fileID: 2800000, guid: 1bc0dd443d4433448893a3169b6c62b6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Vampire_specular
+    second: {fileID: 2800000, guid: d10f489e756ff964eb58b341c635e351, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
