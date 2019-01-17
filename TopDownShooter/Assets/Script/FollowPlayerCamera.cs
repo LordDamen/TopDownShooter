@@ -15,5 +15,6 @@ public class FollowPlayerCamera : MonoBehaviour {
 	void Update () {
         tf.position = targetObjectTransform.position + offset;
         tf.LookAt(targetObjectTransform.position);
+
 	}
 }

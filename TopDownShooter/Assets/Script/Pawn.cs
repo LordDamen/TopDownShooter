@@ -5,10 +5,11 @@ using UnityEngine;
 public class Pawn : MonoBehaviour {
 
      public Animator anim;
-
+    public Transform tf;
         void Start()
         {
             anim = GetComponent<Animator>();
+        tf = GetComponent<Transform>();
         }
 
         // Update is called once per frame
