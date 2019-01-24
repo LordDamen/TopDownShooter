@@ -160,10 +160,10 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 26.991467
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -264,7 +264,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bf08e589ab0337349bc8f2b1107c5428, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -314,6 +314,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   tf: {fileID: 0}
+  turnSpeed: 1
+  moveSpeed: 1
 --- !u!114 &825638510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,7 +355,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!1001 &1090273474
 Prefab:
@@ -416,7 +418,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: db8a8271546a74e48a903fbe3bb1cba6, type: 3}
       propertyPath: m_UpdateMode
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: db8a8271546a74e48a903fbe3bb1cba6, type: 3}
+      propertyPath: m_CullingMode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db8a8271546a74e48a903fbe3bb1cba6, type: 3}
@@ -433,7 +439,7 @@ GameObject:
   - component: {fileID: 1626283287}
   - component: {fileID: 1626283286}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: TestSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -447,7 +453,7 @@ SphereCollider:
   m_GameObject: {fileID: 1626283285}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}

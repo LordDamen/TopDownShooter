@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Pawn : MonoBehaviour {
 
-     public Animator anim;
+    public Animator anim;
     public Transform tf;
-        void Start()
-        {
-            anim = GetComponent<Animator>();
+    public float turnSpeed;
+    public float moveSpeed;
+    void Start()
+    {
+        anim = GetComponent<Animator>();
         tf = GetComponent<Transform>();
-        }
+    }
 
         // Update is called once per frame
         void Update()
@@ -19,7 +21,13 @@ public class Pawn : MonoBehaviour {
         }
         public void Move(Vector3 direction)
         {
-            anim.SetFloat("Vertical", direction.x);
-            anim.SetFloat("Horizontal", direction.z);
+            anim.SetFloat("Vertical", direction.x * moveSpeed);
+            anim.SetFloat("Horizontal", direction.z*moveSpeed);
+        }
+        public void RotateTowards(Vector3 targetPoint)
+        {
+            Vector3 toLookDown = targetPoint - tf.position ;
+            Quaternion lookRotation =  Quaternion.LookRotation(toLookDown, tf.up);
+            tf.rotation = Quaternion.RotateTowards(tf.rotation, lookRotation, turnSpeed * Time.deltaTime);
         }
 }

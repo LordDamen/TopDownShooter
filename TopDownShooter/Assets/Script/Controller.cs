@@ -27,6 +27,8 @@ public class Controller : MonoBehaviour {
         Vector3 targetPoint =theRay.GetPoint(distance);
         //test
         testObject.position = targetPoint;
+        // Rotate to look at that point
+        pawn.RotateTowards(targetPoint);
     }
     void Movement ()
     {
