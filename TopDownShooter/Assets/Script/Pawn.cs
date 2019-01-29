@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Pawn : MonoBehaviour {
 
+    [SerializeField]
     public Animator anim;
+    [SerializeField]
     public Transform tf;
+    [SerializeField]
     public float turnSpeed;
+    [SerializeField]
     public float moveSpeed;
     void Start()
     {
@@ -21,8 +25,8 @@ public class Pawn : MonoBehaviour {
         }
         public void Move(Vector3 direction)
         {
-            anim.SetFloat("Vertical", direction.x * moveSpeed);
-            anim.SetFloat("Horizontal", direction.z*moveSpeed);
+            anim.SetFloat("Vertical", direction.z );
+            anim.SetFloat("Horizontal", direction.x);
         }
         public void RotateTowards(Vector3 targetPoint)
         {
