@@ -63,7 +63,11 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Controller.cs" />
     <Compile Include="Assets\Scripts\FollowPlayerCamera.cs" />
+    <Compile Include="Assets\Scripts\Health.cs" />
     <Compile Include="Assets\Scripts\Pawn.cs" />
+    <Compile Include="Assets\Scripts\PickUps\HealthPU.cs" />
+    <Compile Include="Assets\Scripts\PickUps\PickUp.cs" />
+    <Compile Include="Assets\Scripts\showcase.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/benchout/Documents/GitHub/TopDownShooter/TopDownShooter/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

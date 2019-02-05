@@ -36,8 +36,8 @@ public class Pawn : MonoBehaviour {
     }
     public void Move(Vector3 direction)
     {
-        anim.SetFloat("Vertical", direction.z );
-        anim.SetFloat("Horizontal", direction.x);
+        anim.SetFloat("Vertical", direction.z*moveSpeed);
+        anim.SetFloat("Horizontal", direction.x*moveSpeed);
     }
     public void RotateTowards(Vector3 targetPoint)
     {
@@ -57,7 +57,6 @@ public class Pawn : MonoBehaviour {
             isTired = true;
             stamina += Time.deltaTime / staminaRegenTimer;
             anim.SetBool("IsRunning", false);
-            Debug.Log("added stam");
         }
         stamina = Mathf.Clamp01(stamina);
         if (isTired == true && stamina >= 1f) isTired = false;
