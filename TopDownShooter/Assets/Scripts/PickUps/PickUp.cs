@@ -21,7 +21,7 @@ public abstract class PickUp : MonoBehaviour {
     {
         tf.Rotate(0, RotateSpeed * Time.deltaTime, 0);
     }
-    protected virtual void OnPickup (GameObject target)
+    public virtual void OnPickup (GameObject target)
     {
         // For whatever a pickup does when we call the base pickup
         Debug.Log(target.name + "picked Up a powerup");

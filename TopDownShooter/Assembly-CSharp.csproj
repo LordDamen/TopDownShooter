@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\PickUps\HealthPU.cs" />
     <Compile Include="Assets\Scripts\PickUps\PickUp.cs" />
     <Compile Include="Assets\Scripts\showcase.cs" />
+    <Compile Include="Assets\Scripts\SpawnPoint.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/benchout/Documents/GitHub/TopDownShooter/TopDownShooter/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
