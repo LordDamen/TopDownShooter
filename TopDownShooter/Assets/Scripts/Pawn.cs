@@ -8,20 +8,17 @@ public class Pawn : MonoBehaviour {
     public Animator anim;
     [SerializeField]
     public Transform tf;
-    [SerializeField]
     public float turnSpeed;
-    [SerializeField]
     public float moveSpeed;
-    [SerializeField]
     public float stamina = 1f;
-    [SerializeField]
     public float staminaDepleteTimer = 5f;
-    [SerializeField]
     public float staminaRegenTimer = 3f;
-    [SerializeField]
     public KeyCode runningKey;
     [SerializeField]
     public bool isTired = false;
+
+    public Transform RHPoint;
+    public Transform LHPoint;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -60,5 +57,35 @@ public class Pawn : MonoBehaviour {
         }
         stamina = Mathf.Clamp01(stamina);
         if (isTired == true && stamina >= 1f) isTired = false;
+    }
+    public void OnAnimatorIK(int layerIndex)
+    {
+        if (RHPoint != null)
+        {
+            anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 1.0f);
+            anim.SetIKRotationWeight(AvatarIKGoal.RightHand, 1.0f);
+            //set ik position
+            anim.SetIKPosition(AvatarIKGoal.RightHand, RHPoint.position);
+            anim.SetIKRotation(AvatarIKGoal.RightHand, RHPoint.rotation);
+        } else
+        {
+            // IK weight is 0 - - use 100% animation data to move hands (0% IK Data)
+            anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 0.0f);
+            anim.SetIKRotationWeight(AvatarIKGoal.RightHand, 0.0f);
+        }
+        if (LHPoint != null)
+        {
+            // IK weight is 0 - - use 100% animation data to move hands (0% IK Data)
+            anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1.0f);
+            anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1.0f);
+            //set ik position
+            anim.SetIKPosition(AvatarIKGoal.LeftHand, LHPoint.position);
+            anim.SetIKRotation(AvatarIKGoal.LeftHand, LHPoint.rotation);
+        } else
+        {
+            // IK weight is 0 - - use 100% animation data to move hands (0% IK Data)
+            anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0.0f);
+            anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, 0.0f);
+        }
     }
 }
