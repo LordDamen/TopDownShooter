@@ -44,9 +44,13 @@ public class Controller : MonoBehaviour
         pawn.Move(moveDirection);
         if (Input.GetKey(pawn.runningKey) || pawn.isTired)
         {
+            if (pawn.moveSpeed == 1) pawn.moveSpeed = 2;
+            
             pawn.Running();
+            
         } else
         {
+            if (pawn.moveSpeed >=2) pawn.moveSpeed = 1;
             pawn.anim.SetBool("IsRunning", false);
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour {
 
@@ -15,12 +16,13 @@ public class Health : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        HealthTextUpdate();
 	}
 
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
+        if (currentHealth == 0) Destroy(gameObject);
     }
 
     public void HealDamage(int amount)
@@ -33,5 +35,15 @@ public class Health : MonoBehaviour {
         {
             currentHealth += amount;
         }
+    }
+    public void HealthTextUpdate()
+    {
+        // Check if its the player
+        if (this.tag == "Player")
+        {
+            Text Health = GameObject.Find("Health Text").GetComponent<Text>();
+            Health.text = "Current Health:" + currentHealth;
+        }
+        // if it isnt the player than do nothing
     }
 }

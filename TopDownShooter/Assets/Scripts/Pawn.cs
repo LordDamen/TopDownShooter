@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Pawn : MonoBehaviour {
 
     [SerializeField]
@@ -17,18 +18,29 @@ public class Pawn : MonoBehaviour {
     [SerializeField]
     public bool isTired = false;
 
+    public GameObject equippedWeapon;
+    public WeaponBase weaponScript;
+    public Transform weaponPoint;
+
+
+
     public Transform RHPoint;
     public Transform LHPoint;
     void Start()
     {
         anim = GetComponent<Animator>();
         tf = GetComponent<Transform>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        //check if we can shoot
+
+        if (Input.GetMouseButton(0))
+        {
+            weaponScript.OnShoot();
+        }
 
     }
     public void Move(Vector3 direction)
@@ -58,8 +70,24 @@ public class Pawn : MonoBehaviour {
         stamina = Mathf.Clamp01(stamina);
         if (isTired == true && stamina >= 1f) isTired = false;
     }
+    public void OnEquip(Collision collider)
+    {
+        Destroy(equippedWeapon);
+        RHPoint = null;
+        LHPoint = null;
+        equippedWeapon = collider.gameObject;
+        equippedWeapon.layer = gameObject.layer;
+        equippedWeapon.transform.parent = weaponPoint;
+        equippedWeapon.transform.position = weaponPoint.transform.position;
+        equippedWeapon.transform.rotation = weaponPoint.transform.rotation;
+        weaponScript = equippedWeapon.GetComponent<WeaponBase>();
+        weaponScript.OnEquip(this);
+
+    }
+
     public void OnAnimatorIK(int layerIndex)
     {
+
         if (RHPoint != null)
         {
             anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 1.0f);
@@ -88,4 +116,12 @@ public class Pawn : MonoBehaviour {
             anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, 0.0f);
         }
     }
+    public void OnCollisionEnter(Collision collider)
+    {
+        if (collider.gameObject.tag == "Weapon")
+        {
+            OnEquip(collider);
+        }
+    }
+
 }

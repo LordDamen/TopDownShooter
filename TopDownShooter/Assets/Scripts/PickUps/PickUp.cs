@@ -19,7 +19,7 @@ public abstract class PickUp : MonoBehaviour {
 
     void spin()
     {
-        tf.Rotate(0, RotateSpeed * Time.deltaTime, 0);
+        transform.Rotate(0, RotateSpeed * Time.deltaTime, 0);
     }
     public virtual void OnPickup (GameObject target)
     {
