@@ -37,7 +37,7 @@ public class Pawn : MonoBehaviour {
     {
         //check if we can shoot
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0)&& equippedWeapon != null)
         {
             weaponScript.OnShoot();
         }
@@ -70,12 +70,12 @@ public class Pawn : MonoBehaviour {
         stamina = Mathf.Clamp01(stamina);
         if (isTired == true && stamina >= 1f) isTired = false;
     }
-    public void OnEquip(Collision collider)
+    public void OnEquip(GameObject newWeapon)
     {
         Destroy(equippedWeapon);
         RHPoint = null;
         LHPoint = null;
-        equippedWeapon = collider.gameObject;
+        equippedWeapon = newWeapon;
         equippedWeapon.layer = gameObject.layer;
         equippedWeapon.transform.parent = weaponPoint;
         equippedWeapon.transform.position = weaponPoint.transform.position;
@@ -120,7 +120,7 @@ public class Pawn : MonoBehaviour {
     {
         if (collider.gameObject.tag == "Weapon")
         {
-            OnEquip(collider);
+            OnEquip(collider.gameObject);
         }
     }
 

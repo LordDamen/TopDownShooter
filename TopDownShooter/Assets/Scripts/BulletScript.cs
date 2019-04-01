@@ -20,6 +20,7 @@ public class BulletScript : MonoBehaviour {
 
     void OnCollisionEnter(Collision collider)
     {
+        Debug.Log("Collied with" + collider.gameObject.name); 
         GameObject tempObject = collider.gameObject;
         if (tempObject.GetComponent<Health>() != null)
         {

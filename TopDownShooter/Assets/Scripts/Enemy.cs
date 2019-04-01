@@ -11,21 +11,39 @@ public class Enemy : MonoBehaviour
     public float moveSpeed;
     public float maxRange;
     private Animator anim;
-    private GameManager gm;
+    public List<GameObject> weaponList;
+    
     // Start is called before the first frame update
     void Start()
     {
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         TheMeshAgent = GetComponent<NavMeshAgent>();
         pawn = GetComponent<Pawn>();
         anim = GetComponent<Animator>();
-        
+        WeaponGeneration();
+        target = GameObject.FindGameObjectsWithTag("Player")[0];
     }
 
     // Update is called once per frame
     void Update()
     {
-        Movement();
+        if (!target)
+        {
+            TheMeshAgent.isStopped = true;
+            anim.SetFloat("Horizontal", 0f);
+            anim.SetFloat("Vertical", 0f);
+            return;
+        }
+        else
+        {
+            Movement();
+            if (Vector3.Angle(gameObject.transform.forward, target.transform.position - gameObject.transform.position) < pawn.weaponScript.spread && Vector3.Distance(gameObject.transform.position, target.transform.position) <= maxRange)
+            {
+                pawn.weaponScript.OnShoot();
+                pawn.weaponScript.ammoCount++;
+            }
+            
+        }
+
     }
     // This is the function that allows for the enemy to move
     public void Movement ()
@@ -42,5 +60,10 @@ public class Enemy : MonoBehaviour
     private void OnAnimatorMove()
     {
         TheMeshAgent.velocity = anim.velocity;
+    }
+    void WeaponGeneration ()
+    {
+        GameObject tempWeapon = Instantiate(weaponList[Random.Range(0, weaponList.Count)]);
+        pawn.OnEquip(tempWeapon);
     }
 }
