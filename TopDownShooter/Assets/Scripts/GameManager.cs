@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
             Pause();
 
         }
-        Debug.Log(ps.isEmitting);
+
     }
     void OnSceneLoad()
     {

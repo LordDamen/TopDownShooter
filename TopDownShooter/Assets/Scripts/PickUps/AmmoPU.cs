@@ -8,7 +8,7 @@ public class AmmoPU : PickUp {
     public int ammoAmount;
     public void Awake()
     {
-        Debug.Log("Spawned Ammo");
+
     }
     public override void OnPickup(GameObject target)
     {
